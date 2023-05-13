@@ -1,4 +1,7 @@
 declare var g: Graphics & {
+    setFontAlign(alignX: number, alignY: number): void;
+    setFont(font: string, size: number): void;
+    flip(): void;
     theme: {
         /** foreground colour */
         fg: number,
@@ -16,6 +19,17 @@ declare var g: Graphics & {
         dark: boolean,
     }
 };
+
+namespace E {
+    export function showScroller(options: {
+      h: number,
+      c: number,
+      draw: (idx: number, rect: { x: number, y: number, w: number, h: number }) => void,
+      select: (idx: number, touch: { x: number, y: number }) => void,
+      back?: () => void,
+      remove?: () => void,
+    }): void;
+}
 
 declare var bangle: Bangle;
 declare var WIDGETS: Widgets;
